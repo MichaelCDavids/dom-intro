@@ -1,11 +1,11 @@
 //get a reference to the calculate button
 var calculateBtn = document.querySelector('.calculateBtn');
 //get a reference to the billTotal element
-var billTotalThing = document.querySelector('.billTotal');
+var billTotalElement = document.querySelector('.billTotal');
 //get a reference to the billString
 var billString = document.querySelector('.billString');
 
-// add event listener
+//Function that calculates the total phone bill
 function calculateBtnClicked(){
     // get the string entered in the textArea
     var billStringFunction = billString.value;
@@ -23,22 +23,25 @@ function calculateBtnClicked(){
             billTotal += 0.75;
         }
     }
-
     //round to two decimals
     var roundedBillTotal = billTotal.toFixed(2);
-    console.log(roundedBillTotal);
-    if(roundedBillTotal<20.00){
-      billTotalThing.classList.remove("danger");
-      billTotalThing.classList.remove("warning");
-    }else if(roundedBillTotal>20.00 && roundedBillTotal<30.00){
-        billTotalThing.classList.remove("danger");
-        billTotalThing.classList.add("warning");
-    }else if(roundedBillTotal>30.00){
-      billTotalThing.classList.remove("warning");
-      billTotalThing.classList.add("danger");
-    }
-    billTotalThing.innerHTML = roundedBillTotal;
-
+    billTotalElement.innerHTML = roundedBillTotal;
+}
+//Function that changes the color when warning and critical levels are met
+function colorChangeOne(){
+  if(billTotalElement.innerHTML<20.00){
+    billTotalElement.classList.remove("danger");
+    billTotalElement.classList.remove("warning");
+  }else if(billTotalElement.innerHTML>20.00 && billTotalElement.innerHTML<30.00){
+    billTotalElement.classList.remove("danger");
+    billTotalElement.classList.add("warning");
+  }else if(billTotalElement.innerHTML>=30.00){
+    billTotalElement.classList.remove("warning");
+    billTotalElement.classList.add("danger");
+  }
 }
 
-calculateBtn.addEventListener('click', calculateBtnClicked);
+calculateBtn.addEventListener('click', function(){//Anonymous Function that calls both functions
+  calculateBtnClicked();
+  colorChangeOne();
+});

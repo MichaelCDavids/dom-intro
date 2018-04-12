@@ -5,15 +5,7 @@ var callCost = document.querySelector('.callCostSetting');
 var smsCost = document.querySelector('.smsCostSetting');
 var warningLevels = document.querySelector('.warningLevelSetting');
 var criticalLevels = document.querySelector('.criticalLevelSetting');
-
-
-
-
-
 var updateSettingsBtn = document.querySelector('.updateSettings');
-
-
-
 // get a reference to the sms or call radio buttons
 var radioSettingsButton = document.querySelector('.billItemTypeWithSettings');
 //get a reference to the add button
@@ -61,13 +53,27 @@ function radioSettingsBillFunction(){
     // ItemType will be 'call' or 'sms'
     if(ItemType === 'call'){
       radioSettingCallsTotal += callValue;
-      radioSettingsCallTotal.innerHTML = radioSettingCallsTotal.toFixed(2);
+
       radioSettingsAllTotals += callValue;
+
+      if(radioSettingsAllTotals>criticalValue){
+        var x = radioSettingsAllTotals - criticalValue;
+        radioSettingCallsTotal -= x;
+        radioSettingsAllTotals -= x;
+      }
+      radioSettingsCallTotal.innerHTML = radioSettingCallsTotal.toFixed(2);
       radioSettingsAllTotal.innerHTML = radioSettingsAllTotals.toFixed(2);
     }else if(ItemType === 'sms'){
       radioSettingsSmsTotals += smsValue;
-      radioSettingsSmsTotal.innerHTML = radioSettingsSmsTotals.toFixed(2);
+
       radioSettingsAllTotals += smsValue;
+
+      if(radioSettingsAllTotals>criticalValue){
+        var x = radioSettingsAllTotals - criticalValue;
+        radioSettingsSmsTotals -= x;
+        radioSettingsAllTotals -= x;
+      }
+      radioSettingsSmsTotal.innerHTML = radioSettingsSmsTotals.toFixed(2);
       radioSettingsAllTotal.innerHTML = radioSettingsAllTotals.toFixed(2);
     }
     if(radioSettingsAllTotals<warningValue){
@@ -79,8 +85,10 @@ function radioSettingsBillFunction(){
     }else if(radioSettingsAllTotals>=criticalValue){
       radioSettingsAllTotal.classList.remove("warning");
       radioSettingsAllTotal.classList.add("danger");
-      radioSettingsAddBtn.removeEventListener('click', radioSettingsBillFunction);
+      callValue = 0.00;
+      smsValue = 0.00;
     }
+
   }
 }
 

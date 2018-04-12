@@ -29,11 +29,17 @@ function phoneBill(){
     totalPhoneBillTracker += 0.75;
     totalBill.innerHTML = totalPhoneBillTracker.toFixed(2);
   }
-  if(totalPhoneBillTracker>30.00 && totalPhoneBillTracker<50.00){
+}
+
+function colorChangeTwo(){
+  if(totalBill.innerHTML>30.00 && totalBill.innerHTML<50.00){
       totalBill.classList.add("warning");
-  }else if(totalPhoneBillTracker>50.00){
+  }else if(totalBill.innerHTML>50.00){
       totalBill.classList.add("danger");
   }
 }
 
-addButton.addEventListener('click', phoneBill);
+addButton.addEventListener('click', function(){
+  phoneBill();
+  colorChangeTwo();
+});

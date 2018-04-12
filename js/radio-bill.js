@@ -31,17 +31,22 @@ function radioBillFunction(){
       radioTotalPhoneBillTracker += 0.75;
       radioAllTotal.innerHTML = radioTotalPhoneBillTracker.toFixed(2);
     }
-    if(radioTotalPhoneBillTracker<20.00){
-      radioAllTotal.classList.remove("danger");
-      radioAllTotal.classList.remove("warning");
-    }else if(radioTotalPhoneBillTracker>20.00 && radioTotalPhoneBillTracker<30.00){
-      radioAllTotal.classList.remove("danger");
-      radioAllTotal.classList.add("warning");
-    }else if(radioTotalPhoneBillTracker>30.00){
-      radioAllTotal.classList.remove("warning");
-      radioAllTotal.classList.add("danger");
-    }
+  }
+}
+function colorChangeThree(){
+  if(radioAllTotal.innerHTML<30.00){
+    radioAllTotal.classList.remove("danger");
+    radioAllTotal.classList.remove("warning");
+  }else if(radioAllTotal.innerHTML>30.00 && radioAllTotal.innerHTML<50.00){
+    radioAllTotal.classList.remove("danger");
+    radioAllTotal.classList.add("warning");
+  }else if(radioAllTotal.innerHTML>=50.00){
+    radioAllTotal.classList.remove("warning");
+    radioAllTotal.classList.add("danger");
   }
 }
 
-radioAddButton.addEventListener('click', radioBillFunction);
+radioAddButton.addEventListener('click', function(){
+  radioBillFunction();
+  colorChangeThree();
+});
