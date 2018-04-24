@@ -22,12 +22,20 @@ document.addEventListener('DOMContentLoaded', function(){
     var checkedRadioBtnTwo = document.querySelector("input[name='billItemTypeWithSettings']:checked");
     if (checkedRadioBtnTwo){
       var ItemType = checkedRadioBtnTwo.value;
-      console.log(ItemType);
-      //settingsObject.settingsBill(checkedRadioBtnTwo);
       settingsObject.calculateSettingsBill(ItemType);
       radioSettingsCallTotal.innerHTML = settingsObject.allCalls().toFixed(2);
       radioSettingsSmsTotal.innerHTML = settingsObject.allSms().toFixed(2);
       radioSettingsAllTotal.innerHTML = settingsObject.allTotal().toFixed(2);
+    }
+    if(settingsObject.allTotal()<settingsObject.WarningValue()){
+      radioSettingsAllTotal.classList.remove("danger");
+      radioSettingsAllTotal.classList.remove("warning");
+    }else if(settingsObject.allTotal()>settingsObject.WarningValue() && settingsObject.allTotal()<settingsObject.CriticalValue()){
+      radioSettingsAllTotal.classList.remove("danger");
+      radioSettingsAllTotal.classList.add("warning");
+    }else if(settingsObject.allTotal()>=settingsObject.CriticalValue()){
+      radioSettingsAllTotal.classList.remove("warning");
+      radioSettingsAllTotal.classList.add("danger");
     }
 
   }
@@ -43,6 +51,10 @@ document.addEventListener('DOMContentLoaded', function(){
     settingsObject.updateCriticalValue(newCriticalLevel);
   }
 
+
   updateSettingsBtn.addEventListener('click',valueUpdater);
-  radioSettingsAddBtn.addEventListener('click', addToBill);
+  radioSettingsAddBtn.addEventListener('click', function(){
+    addToBill();
+
+  });
 });
