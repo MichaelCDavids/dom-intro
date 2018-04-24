@@ -153,29 +153,52 @@ describe('The settingsCalculator Function',function(){
       settingBill.calculateSettingsBill('call');
       settingBill.calculateSettingsBill('call');
       settingBill.calculateSettingsBill('call');
-      settingBill.calculateSettingsBill('call');
-      settingBill.calculateSettingsBill('call');
-      settingBill.calculateSettingsBill('call');
-      settingBill.calculateSettingsBill('call');
-      settingBill.calculateSettingsBill('call');
-      settingBill.calculateSettingsBill('call');
-      settingBill.calculateSettingsBill('call');
-      settingBill.calculateSettingsBill('call');
-      settingBill.calculateSettingsBill('call');
-      settingBill.calculateSettingsBill('call');
-      settingBill.calculateSettingsBill('call');
-      settingBill.calculateSettingsBill('call');
 
       assert.isAtMost(settingBill.allTotal(), settingBill.CriticalValue());
-      assert.equal(settingBill.reachedCriticalLevel(), true);
-
-
-      // this should be in another test - this is testing that if the critical level
-      settingBill.newCritical(100.00);
-      assert.equal(settingBill.reachedCriticalLevel(), false);
-
-
+      //assert.equal(settingBill.reachedCriticalLevel(), true);
       //assert.isAtMost(settingBill.total(), settingBill.CriticalVal());
 
+  });
+  it('should check if critical level is reached',function(){
+    var settingBill = SettingsFunctions();
+
+    settingBill.newCall(5);
+    settingBill.newSms(2.50);
+    settingBill.newWarning(10.00);
+    settingBill.newCritical(50.00);
+
+    settingBill.calculateSettingsBill('call');
+    settingBill.calculateSettingsBill('call');
+    settingBill.calculateSettingsBill('call');
+    settingBill.calculateSettingsBill('call');
+    settingBill.calculateSettingsBill('call');
+    settingBill.calculateSettingsBill('call');
+    settingBill.calculateSettingsBill('call');
+    settingBill.calculateSettingsBill('call');
+    settingBill.calculateSettingsBill('call');
+    settingBill.calculateSettingsBill('call');
+
+    assert.equal(settingBill.reachedCriticalLevel(), true);
+  });
+  it('should check if critical level is reached',function(){
+    var settingBill = SettingsFunctions();
+
+    settingBill.newCall(5);
+    settingBill.newSms(2.50);
+    settingBill.newWarning(10.00);
+    settingBill.newCritical(100.00);
+
+    settingBill.calculateSettingsBill('call');
+    settingBill.calculateSettingsBill('call');
+    settingBill.calculateSettingsBill('call');
+    settingBill.calculateSettingsBill('call');
+    settingBill.calculateSettingsBill('call');
+    settingBill.calculateSettingsBill('call');
+    settingBill.calculateSettingsBill('call');
+    settingBill.calculateSettingsBill('call');
+    settingBill.calculateSettingsBill('call');
+    settingBill.calculateSettingsBill('call');
+
+    assert.equal(settingBill.reachedCriticalLevel(), false);
   });
 });
