@@ -1,45 +1,33 @@
-// get a reference to the textbox where the bill type is to be entered
-var textBill = document.querySelector('.billTypeText');
-// get a reference to the textbox where the call total will be displayed
-var callTotal = document.querySelector('.callTotalOne');
-// get a reference to the textbox where the sms total will be displayed
-var smsTotal = document.querySelector('.smsTotalOne');
-// get a reference to the textbox where the total phone bill is to be displayed
-var totalBill = document.querySelector('.totalOne');
-//get a reference to the add button
-var addButton = document.querySelector('.addToBillBtn');
+document.addEventListener('DOMContentLoaded', function(){
 
-// create a variable that will keep track of call bill
-var callsTotal = 0;
-// create a variable that will keep track of sms bill
-var smssTotal = 0;
-//create a variable that will keep track of the total bill
-var totalPhoneBillTracker = 0;
+  var textBill = document.querySelector('.billTypeText');
 
-//add an event listener for when the add button is pressed
-function phoneBill(){
-  if(textBill.value === 'call'){
-    callsTotal += 2.75;
-    callTotal.innerHTML = callsTotal.toFixed(2);
-    totalPhoneBillTracker += 2.75;
-    totalBill.innerHTML = totalPhoneBillTracker.toFixed(2);
-  }else if(textBill.value === 'sms'){
-    smssTotal += 0.75;
-    smsTotal.innerHTML = smssTotal.toFixed(2);
-    totalPhoneBillTracker += 0.75;
-    totalBill.innerHTML = totalPhoneBillTracker.toFixed(2);
+  var callTotal = document.querySelector('.callTotalOne');
+  var smsTotal = document.querySelector('.smsTotalOne');
+  var totalBill = document.querySelector('.totalOne');
+
+  var addButton = document.querySelector('.addToBillBtn');
+
+  var textBillObj = TextBill();
+
+  function colorChangeTwo(){
+    var tot = totalBill.innerHTML;
+    if(tot>=30.00 && tot<50.00){
+        totalBill.classList.add("warning");
+    }else if(tot>=50.00){
+        totalBill.classList.add("danger");
+        alert('Critical Level Reached!');
+    }
   }
-}
 
-function colorChangeTwo(){
-  if(totalBill.innerHTML>30.00 && totalBill.innerHTML<50.00){
-      totalBill.classList.add("warning");
-  }else if(totalBill.innerHTML>50.00){
-      totalBill.classList.add("danger");
-  }
-}
-
-addButton.addEventListener('click', function(){
-  phoneBill();
-  colorChangeTwo();
+  addButton.addEventListener('click', function(){
+    var usageItem = textBill.value;
+    var billTwoTotal = textBillObj.billTwo(usageItem);
+    var callBillTwo = textBillObj.callTwo();
+    callTotal.innerHTML = callBillTwo.toFixed(2);
+    var smsBillTwo = textBillObj.smsTwo();
+    smsTotal.innerHTML = smsBillTwo.toFixed(2);
+    totalBill.innerHTML = textBillObj.finalTotal();
+    colorChangeTwo();
+  });
 });
