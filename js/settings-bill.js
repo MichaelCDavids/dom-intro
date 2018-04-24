@@ -30,20 +30,6 @@ document.addEventListener('DOMContentLoaded', function(){
       radioSettingsAllTotal.innerHTML = settingsObject.allTotal().toFixed(2);
     }
 
-
-
-
-
-    // settingsObject.settingsBill(checkedRadioBtnTwo);
-    // var newcallTotal = settingsObject.callTotal();
-    // console.log(newcallTotal);
-    // var newsmsTotal = settingsObject.smsTotal();
-    // console.log(newsmsTotal);
-    // var newtotal = settingsObject.total();
-    // console.log(newtotal);
-    // radioSettingsCallTotal.innerHTML = newcallTotal.toFixed(2);
-    // radioSettingsSmsTotal.innerHTML = newsmsTotal.toFixed(2);
-    // radioSettingsAllTotal.innerHTML = newtotal.toFixed(2);
   }
 
   function valueUpdater(){
