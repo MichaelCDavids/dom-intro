@@ -42,7 +42,11 @@ function SettingsFunctions(){
     return criticalValue = x;
   }
   function isCriticalLevelReached(){
-
+    if(radioSettingsAllTotals>=criticalValue){
+      return true;
+    }else{
+      return false;
+    }
   }
 
   //Updating Values
@@ -106,6 +110,7 @@ function SettingsFunctions(){
     newSms : smsCost,
     newWarning : setWarningLevel,
     newCritical : setCriticalLevel,
+    reachedCriticalLevel : isCriticalLevelReached,
 
     CallValue: getCallValue,
     SmsValue: getSmsValue,
