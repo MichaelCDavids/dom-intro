@@ -16,8 +16,6 @@ function SettingsFunctions(){
       radioSettingsAllTotals += smsValue;
     }
   }
-
-
   //Functions for the Tests
   function callCost(x){
     return callValue = x;
