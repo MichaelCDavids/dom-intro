@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function(){
     }else if(settingsObject.allTotal()>=settingsObject.CriticalValue()){
       radioSettingsAllTotal.classList.remove("warning");
       radioSettingsAllTotal.classList.add("danger");
-      alert('Critical Level Reached!');
     }
 
   }

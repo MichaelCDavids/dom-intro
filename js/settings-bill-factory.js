@@ -9,8 +9,8 @@ function SettingsFunctions(){
 
   function billCalculator(billTypeSettings){
     if(billTypeSettings === 'call'){
-      radioSettingCallsTotal += callValue;
-      radioSettingsAllTotals += callValue;
+        radioSettingCallsTotal += callValue;
+        radioSettingsAllTotals += callValue;
     }else if( billTypeSettings === 'sms' ){
       radioSettingsSmsTotals += smsValue;
       radioSettingsAllTotals += smsValue;
