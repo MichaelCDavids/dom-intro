@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function(){
     callTotal.innerHTML = callBillTwo.toFixed(2);
     var smsBillTwo = textBillObj.smsTwo();
     smsTotal.innerHTML = smsBillTwo.toFixed(2);
-    totalBill.innerHTML = textBillObj.finalTotal();
+    totalBill.innerHTML = textBillObj.finalTotal().toFixed(2);
     colorChangeTwo();
   });
 });
