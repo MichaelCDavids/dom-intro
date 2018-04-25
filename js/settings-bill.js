@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function(){
     }else if(settingsObject.allTotal()>=settingsObject.CriticalValue()){
       radioSettingsAllTotal.classList.remove("warning");
       radioSettingsAllTotal.classList.add("danger");
+      alert('Critical Level Reached!');
     }
 
   }
@@ -53,6 +54,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
   updateSettingsBtn.addEventListener('click',valueUpdater);
+
   radioSettingsAddBtn.addEventListener('click', function(){
     addToBill();
 

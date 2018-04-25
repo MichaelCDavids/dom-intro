@@ -1,33 +1,4 @@
-describe('The calculateBill Function',function(){
-  it('should calculate the total for a string of call usage', function(){
-    assert.equal(calculateBill("call,call,call,call,call,call,call,call,call,call"),27.50);
-  });
-  it('should calculate the total for a string of sms usage', function(){
-    assert.equal(calculateBill("sms,sms,sms,sms,sms,sms,sms,sms,sms,sms"),7.50);
-  });
-  it('should calculate the total for a string of call+sms usage', function(){
-    assert.equal(calculateBill("call,call,call,call,call,call,sms,sms,sms,sms,sms,sms,sms,sms,sms,sms,call,call,call,call"),35.00);
-  });
-  it('should calculate the total for an empty string of phone usage', function(){
-    assert.equal(calculateBill(" "),0.00);
-  });
-});
-
-describe('The phoneBill Function',function(){
-  it('should calculate the total for a call',function(){
-
-  });
-  it('should calculate the total for multiple calls',function(){
-
-  });
-  it('should calculate the total for a call and sms',function(){
-
-  });
-  it('should calculate the total for a sms',function(){
-
-  });
-});
-describe('The settingsCalculator Function',function(){
+describe('The settings-bill function logic',function(){
 
   it('should calculate the total for a call', function(){
 
@@ -132,11 +103,6 @@ describe('The settingsCalculator Function',function(){
     settingBill.calculateSettingsBill('call');
     assert.equal(settingBill.allTotal(),37.50);
   });
-  // it('should calculate the total for an empty string of phone usage', function(){
-  //   var settingBill = SettingsFunctions()
-  //   assert.equal(settingBill.total(),0.00);
-  // });
-  //
   it('should check if the total is greater or equal to critical level',function(){
       var settingBill = SettingsFunctions();
 
