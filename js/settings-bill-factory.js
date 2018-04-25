@@ -7,16 +7,6 @@ function SettingsFunctions(){
   var radioSettingsSmsTotals = 0;
   var radioSettingsAllTotals = 0;
 
-
-
-
-
-
-
-
-
-
-
   function billCalculator(billTypeSettings){
     if(billTypeSettings === 'call'){
       radioSettingCallsTotal += callValue;
